@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <title>Party-loyalty_house</title>
+</head>
+
+<body>
+    <div class="container" id="app">
+        <img src="tgif.png" class="img-responsive" alt="" width="200" height="200">
+
+        <div>
+            <a href="https://beminuscula.com/ubiqum/tgif/senate_attendance.html">TGIF</a>
+        </div>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="home.html">Home</a></li>
+                    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Congress 113<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="senate-date.html">Senate</a></li>
+                            <li><a href="house_data.html">House</a></li>
+                        </ul>
+
+                    </li>
+                    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="">Attendance<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="attendance_senate.html">Senate</a></li>
+                            <li><a href="attendence_house.html">House</a></li>
+                        </ul>
+
+                    <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="">Party-loyalty<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="party-loyalty_senate.html">Senate</a></li>
+                            <li><a href="party-loyalty_house.html">House</a></li>
+                        </ul>
+
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="row">
+            <div class="col-sm-8">
+                <h2>Party Loyalty</h2>
+                <p>Those who consider themselves to be strong partisans, strong Democrats and strong Republicans respectively, tend to be the most faithful in voting for their party's nominee for office and legislation that backs their party's agenda. </p>
+            </div>
+            <div class="col-sm-4">
+                <h2>House at a glance</h2>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Party</th>
+                            <th>Number of Reps</th>
+                            <th>% Voted with Prty</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Republican</td>
+                            <td>{{statisticsVue.Number_of_republicans}}</td>
+                            <td>{{statisticsVue.totalPorcentsRepublicans}}´</td>
+                        </tr>
+                        <tr>
+                            <td>Democrat</td>
+                            <td>{{statisticsVue.Number_of_democrats}}</td>
+                            <td>{{statisticsVue.totalPorcentsDemocrats}}</td>
+                        </tr>
+                        <tr>
+                            <td>Independent</td>
+                            <td>{{statisticsVue.Number_of_independdents}}</td>
+                            <td>{{statisticsVue.totalPorcentsIdependdents}}</td>
+                        </tr>
+                        <tr>
+                            <td>Total</td>
+                            <td>{{statisticsVue.sumaNumbersOfParty}}</td>
+                            <td>{{statisticsVue.totalPorcents}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <h2>Least Loyal (Bottom 10% of Party)</h2>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Number Party Votes</th>
+                            <th>% Party Votes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="least in statisticsVue.leastLoyal">
+                            <td><a href="{{least.url}}">{{least.first_name}} {{least.middle_name}} {{least.last_name}}</a></td>
+                            <td>{{least.total_votes}}</td>
+                            <td>{{least.votes_with_party_pct}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-sm-6">
+                <h2>Most Loyal (Top 10% of Party)</h2>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Number Party Votes</th>
+                            <th>% Party Votes</th>
+                        </tr>
+                    </thead>
+                    <tbody id="most_loyal">
+                        <tr v-for="least in statisticsVue.mostLoyal">
+                            <td><a href="{{least.url}}">{{least.first_name}} {{least.middle_name}} {{least.last_name}}</a></td>
+                            <td>{{least.total_votes}}</td>
+                            <td>{{least.votes_with_party_pct}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+        <!--        <script src="congress_113_house.js"></script>-->
+        <script src="statistics.js"></script>
+    </div>
+
+</body></html>
